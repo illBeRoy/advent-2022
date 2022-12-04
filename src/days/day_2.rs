@@ -1,5 +1,74 @@
 use crate::day::Day;
-use std::fs;
+use crate::input::read_input;
+
+const INPUT_FILE: &str = "day2.txt";
+
+#[derive(Clone, Copy)]
+pub struct Day2 {}
+
+impl Day for Day2 {
+    fn title(&self) -> &'static str {
+        "Rock Paper Scissors"
+    }
+
+    fn task_1(&self) -> String {
+        let input = read_input(INPUT_FILE);
+
+        fn parse_match_line(match_line: &str) -> Match {
+            let their_hand = match match_line.chars().nth(0) {
+                Some('A') => Hand::Rock,
+                Some('B') => Hand::Paper,
+                Some('C') => Hand::Scissors,
+                _ => panic!("invalid input"),
+            };
+
+            let your_hand = match match_line.chars().nth(2) {
+                Some('X') => Hand::Rock,
+                Some('Y') => Hand::Paper,
+                Some('Z') => Hand::Scissors,
+                _ => panic!("invalid input"),
+            };
+
+            Match {
+                your_hand,
+                their_hand,
+            }
+        }
+
+        let total_score: u32 = input.lines().map(parse_match_line).map(|m| m.score()).sum();
+
+        format!("total score: {}", total_score)
+    }
+
+    fn task_2(&self) -> String {
+        let input = read_input(INPUT_FILE);
+
+        fn parse_match_line(match_line: &str) -> Match {
+            let their_hand = match match_line.chars().nth(0) {
+                Some('A') => Hand::Rock,
+                Some('B') => Hand::Paper,
+                Some('C') => Hand::Scissors,
+                _ => panic!("invalid input"),
+            };
+
+            let your_hand = match match_line.chars().nth(2) {
+                Some('X') => their_hand.wins_over(),
+                Some('Y') => their_hand.clone(),
+                Some('Z') => their_hand.loses_to(),
+                _ => panic!("invalid input"),
+            };
+
+            Match {
+                your_hand,
+                their_hand,
+            }
+        }
+
+        let total_score: u32 = input.lines().map(parse_match_line).map(|m| m.score()).sum();
+
+        format!("total score: {}", total_score)
+    }
+}
 
 #[derive(PartialEq, Debug, Clone)]
 enum Hand {
@@ -55,74 +124,5 @@ impl Match {
         };
 
         (hand_score + win_score) as u32
-    }
-}
-
-#[derive(Clone, Copy)]
-pub struct Day2 {}
-
-impl Day for Day2 {
-    fn title(&self) -> &'static str {
-        "Rock Paper Scissors"
-    }
-
-    fn task_1(&self) -> String {
-        let input = fs::read_to_string("assets/inputs/day2_part1.txt")
-            .expect("missing input file: day2_part1.txt");
-
-        fn parse_match_line(match_line: &str) -> Match {
-            let their_hand = match match_line.chars().nth(0) {
-                Some('A') => Hand::Rock,
-                Some('B') => Hand::Paper,
-                Some('C') => Hand::Scissors,
-                _ => panic!("invalid input"),
-            };
-
-            let your_hand = match match_line.chars().nth(2) {
-                Some('X') => Hand::Rock,
-                Some('Y') => Hand::Paper,
-                Some('Z') => Hand::Scissors,
-                _ => panic!("invalid input"),
-            };
-
-            Match {
-                your_hand,
-                their_hand,
-            }
-        }
-
-        let total_score: u32 = input.lines().map(parse_match_line).map(|m| m.score()).sum();
-
-        format!("total score: {}", total_score)
-    }
-
-    fn task_2(&self) -> String {
-        let input = fs::read_to_string("assets/inputs/day2_part1.txt")
-            .expect("missing input file: day2_part1.txt");
-
-        fn parse_match_line(match_line: &str) -> Match {
-            let their_hand = match match_line.chars().nth(0) {
-                Some('A') => Hand::Rock,
-                Some('B') => Hand::Paper,
-                Some('C') => Hand::Scissors,
-                _ => panic!("invalid input"),
-            };
-
-            let your_hand = match match_line.chars().nth(2) {
-                Some('X') => their_hand.wins_over(),
-                Some('Y') => their_hand.clone(),
-                Some('Z') => their_hand.loses_to(),
-                _ => panic!("invalid input"),
-            };
-
-            Match {
-                your_hand,
-                their_hand,
-            }
-        }
-
-        let total_score: u32 = input.lines().map(parse_match_line).map(|m| m.score()).sum();
-
-        format!("total score: {}", total_score)
     }
 }

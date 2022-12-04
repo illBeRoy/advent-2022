@@ -1,7 +1,10 @@
 mod day;
 mod days;
+mod input;
 
-use crate::{day::Day, days::day_2::Day2};
+use crate::day::Day;
+use crate::days::day_2::Day2;
+use crate::days::day_3::Day3;
 use clap::Parser;
 
 #[derive(Parser)]
@@ -13,7 +16,7 @@ struct CLI {
 }
 
 fn main() {
-    let days = [Day2 {}];
+    let days: [Box<dyn Day>; 2] = [Box::from(Day2 {}), Box::from(Day3 {})];
     let args = CLI::parse();
 
     assert!(
@@ -30,6 +33,8 @@ fn main() {
         "invalid task index, expected 1 or 2"
     );
 
+    println!("Advent of Code 2022");
+    println!("");
     println!("Day {}", args.day);
     println!("{}", day.title());
     println!("");
