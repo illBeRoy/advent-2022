@@ -2,10 +2,12 @@ mod day;
 mod days;
 mod input;
 
+use clap::{ArgAction, Parser};
+
 use crate::day::Day;
 use crate::days::day_2::Day2;
 use crate::days::day_3::Day3;
-use clap::{ArgAction, Parser};
+use crate::days::day_4::Day4;
 
 #[derive(Parser)]
 struct CLI {
@@ -22,7 +24,8 @@ struct CLI {
 }
 
 fn main() {
-    let days: [Box<dyn Day>; 2] = [Box::from(Day2 {}), Box::from(Day3 {})];
+    let days: [Box<dyn Day>; 3] = [Box::from(Day2 {}), Box::from(Day3 {}), Box::from(Day4 {})];
+
     let args = CLI::parse();
 
     assert!(

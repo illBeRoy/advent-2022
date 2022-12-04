@@ -1,7 +1,8 @@
-use crate::day::Day;
-use crate::input::read_input;
 use bitmaps::Bitmap;
 use itertools::Itertools;
+
+use crate::day::Day;
+use crate::input::read_input;
 
 const INPUT_FILE: &str = "day3.txt";
 
@@ -25,7 +26,7 @@ impl Day for Day3 {
         
         Then all we have to do is scan the first array of items and flip the relevant bits, followed by a scan
         of the second array for an item whose bit is ticked. That makes the algorithm run in a linear complexity! (O(n) instead of O(nlogn)).
-        
+
         For the second task, I used three bitmaps every time (one per elf) and then checked which bit is turned in all three.
         "
     }
@@ -52,10 +53,10 @@ impl Day for Day3 {
         let rucksacks = input.lines().map(parse_line_into_rucksack);
 
         let mut sum_of_shared_items = 0;
-        let mut rucksacks_iter = rucksacks.into_iter().peekable();
-
-        while rucksacks_iter.peek().is_some() {
-            let (elf1, elf2, elf3) = rucksacks_iter.next_tuple().expect("expected input to have trios of elf rucksacks, but for some reason could not take three elves at a time");
+        for group in rucksacks.chunks(3).into_iter() {
+            let (elf1, elf2, elf3) = group
+                .collect_tuple()
+                .expect("invalid input: group did not contain 3 elves");
 
             let shared_item = get_item_shared_between_three_rucksacks((&elf1, &elf2, &elf3));
             sum_of_shared_items += shared_item.score;
