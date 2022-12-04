@@ -44,5 +44,5 @@ Result: total score: 13889
 I completed the first day's puzzle in Typescript :)
 
 ### How to run with my own input?
-Come one, the fun part of AoC is solving the puzzles yourself.
+Come on, the fun part of AoC is solving the puzzles yourself.
 That said, you can find the inputs in `assets/inputs` directory. Simply edit the relevant input file for the day and task you wish to solve.
