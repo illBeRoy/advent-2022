@@ -13,6 +13,23 @@ impl Day for Day3 {
         "Rucksack Reorganization"
     }
 
+    fn description(&self) -> &'static str {
+        "
+        A naive solution here would be to sort every array of items and then compare them in order to find matches (or use a hash map).
+        That would take O(nlogn) due to sort \\ in case of collision in hash map.
+
+        There is, though, a constraint that makes an even more efficient solution possible, and it is hinted with the *score*!
+
+        There are only 52 possible values, so we can actually use a bitmap of size 52, where every bit stands for
+        a specific item (bits 1-26 for a-z, bits 27-52 for A-Z).
+        
+        Then all we have to do is scan the first array of items and flip the relevant bits, followed by a scan
+        of the second array for an item whose bit is ticked. That makes the algorithm run in a linear complexity! (O(n) instead of O(nlogn)).
+        
+        For the second task, I used three bitmaps every time (one per elf) and then checked which bit is turned in all three.
+        "
+    }
+
     fn task_1(&self) -> String {
         let input = read_input(INPUT_FILE);
 

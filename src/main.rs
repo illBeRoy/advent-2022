@@ -5,7 +5,7 @@ mod input;
 use crate::day::Day;
 use crate::days::day_2::Day2;
 use crate::days::day_3::Day3;
-use clap::Parser;
+use clap::{ArgAction, Parser};
 
 #[derive(Parser)]
 struct CLI {
@@ -13,6 +13,12 @@ struct CLI {
     day: usize,
     #[arg(long, help = "which task to run [1-2]")]
     task: u8,
+    #[arg(
+        long,
+        action = ArgAction::SetTrue,
+        help = "whether or not to display a description of the solution"
+    )]
+    describe: Option<bool>,
 }
 
 fn main() {
@@ -37,6 +43,9 @@ fn main() {
     println!("");
     println!("Day {}", args.day);
     println!("{}", day.title());
+    if args.describe == Some(true) {
+        println!("{}", day.description());
+    }
     println!("");
     println!("Task: {}", args.task);
     println!(

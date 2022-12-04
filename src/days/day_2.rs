@@ -11,6 +11,16 @@ impl Day for Day2 {
         "Rock Paper Scissors"
     }
 
+    fn description(&self) -> &'static str {
+        "
+        The solution is pretty straightforward: we introduce a \"Match\" struct that
+        handles all the relevant logic: who wins over whom, and the scoring.
+
+        From that point onwards, all that changes between the two tasks is how we interpret the input:
+        In the first, we interpret XYZ into specific hands. In the second we interpret them according to the opponent hand.
+        "
+    }
+
     fn task_1(&self) -> String {
         let input = read_input(INPUT_FILE);
 
