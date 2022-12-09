@@ -12,7 +12,17 @@ Start by running:
 cargo build
 ```
 
-You can then run the project by running
+Next, import the input for the day you want to run into the `assets/inputs` directory, using the following naming convention:
+```
+assets/inputs/day<NUM>.txt
+```
+
+For example, if you want to run day 6, import your input into the file:
+```
+assets/inputs/day6.txt
+```
+
+Now, you can solve the desired day by running:
 ```sh
 cargo run -- --day <DAY> --task <TASK>
 ```
@@ -41,7 +51,7 @@ Result: total score: 13889
 
 ## Q&A
 ### Why no day 1?
-I completed the first day's puzzle in Typescript :)
+I completed the first day's puzzle using Typescript :)
 
 ### How to run with my own input?
 Come on, the fun part of AoC is solving the puzzles yourself.
