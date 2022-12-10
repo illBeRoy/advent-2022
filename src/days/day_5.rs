@@ -2,9 +2,7 @@ use itertools::Itertools;
 use regex::Regex;
 
 use crate::day::Day;
-use crate::input::read_input;
-
-const INPUT_FILE: &str = "day5.txt";
+use crate::input::input_for_day;
 
 #[derive(Clone, Copy)]
 pub struct Day5 {}
@@ -30,7 +28,7 @@ impl Day for Day5 {
     }
 
     fn task_1(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(5);
 
         let mut stacks = parse_crate_stacks_from_input(input.as_str());
         let instructions = parse_move_instructions_from_input(input.as_str());
@@ -48,7 +46,7 @@ impl Day for Day5 {
     }
 
     fn task_2(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(5);
 
         let mut stacks = parse_crate_stacks_from_input(input.as_str());
         let instructions = parse_move_instructions_from_input(input.as_str());

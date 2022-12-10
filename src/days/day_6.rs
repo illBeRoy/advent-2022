@@ -2,9 +2,7 @@ use itertools::Itertools;
 use std::collections::HashSet;
 
 use crate::day::Day;
-use crate::input::read_input;
-
-const INPUT_FILE: &str = "day6.txt";
+use crate::input::input_for_day;
 
 #[derive(Clone, Copy)]
 pub struct Day6 {}
@@ -32,7 +30,7 @@ impl Day for Day6 {
     }
 
     fn task_1(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(6);
 
         let char_count_until_packet_start = RollingStringIterator::new(input, 4)
             .enumerate()
@@ -49,7 +47,7 @@ impl Day for Day6 {
     }
 
     fn task_2(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(6);
 
         let char_count_until_packet_start = RollingStringIterator::new(input, 14)
             .enumerate()

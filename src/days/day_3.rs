@@ -2,9 +2,7 @@ use bitmaps::Bitmap;
 use itertools::Itertools;
 
 use crate::day::Day;
-use crate::input::read_input;
-
-const INPUT_FILE: &str = "day3.txt";
+use crate::input::input_for_day;
 
 #[derive(Clone, Copy)]
 pub struct Day3 {}
@@ -32,7 +30,7 @@ impl Day for Day3 {
     }
 
     fn task_1(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(3);
 
         let rucksacks = input.lines().map(parse_line_into_rucksack);
 
@@ -48,7 +46,7 @@ impl Day for Day3 {
     }
 
     fn task_2(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(3);
 
         let rucksacks = input.lines().map(parse_line_into_rucksack);
 

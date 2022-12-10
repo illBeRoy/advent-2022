@@ -1,11 +1,8 @@
+use itertools::Itertools;
 use std::collections::HashSet;
 
-use itertools::Itertools;
-
 use crate::day::Day;
-use crate::input::read_input;
-
-const INPUT_FILE: &str = "day9.txt";
+use crate::input::input_for_day;
 
 #[derive(Clone, Copy)]
 pub struct Day9 {}
@@ -35,7 +32,7 @@ impl Day for Day9 {
     }
 
     fn task_1(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(9);
         let steps = parse_input_into_steps(&input);
 
         let mut rope = Rope::new(0);
@@ -71,7 +68,7 @@ impl Day for Day9 {
     }
 
     fn task_2(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(9);
         let steps = parse_input_into_steps(&input);
 
         let mut rope = Rope::new(8);

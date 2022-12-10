@@ -3,9 +3,7 @@ use regex::Regex;
 use std::collections::HashMap;
 
 use crate::day::Day;
-use crate::input::read_input;
-
-const INPUT_FILE: &str = "day7.txt";
+use crate::input::input_for_day;
 
 #[derive(Clone, Copy)]
 pub struct Day7 {}
@@ -41,7 +39,7 @@ impl Day for Day7 {
     }
 
     fn task_1(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(7);
         let dir_tree = parse_input_into_dir_tree(&input);
 
         let dirs_under_100000 = dir_tree
@@ -59,7 +57,7 @@ impl Day for Day7 {
     }
 
     fn task_2(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(7);
         let dir_tree = parse_input_into_dir_tree(&input);
 
         const TOTAL_DISK_SIZE: u64 = 70_000_000;

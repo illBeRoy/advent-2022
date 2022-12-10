@@ -1,7 +1,5 @@
 use crate::day::Day;
-use crate::input::read_input;
-
-const INPUT_FILE: &str = "day2.txt";
+use crate::input::input_for_day;
 
 #[derive(Clone, Copy)]
 pub struct Day2 {}
@@ -22,7 +20,7 @@ impl Day for Day2 {
     }
 
     fn task_1(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(2);
 
         fn parse_match_line(match_line: &str) -> Match {
             let their_hand = match match_line.chars().nth(0) {
@@ -51,7 +49,7 @@ impl Day for Day2 {
     }
 
     fn task_2(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(2);
 
         fn parse_match_line(match_line: &str) -> Match {
             let their_hand = match match_line.chars().nth(0) {

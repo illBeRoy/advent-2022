@@ -5,6 +5,7 @@ mod input;
 use clap::{ArgAction, Parser};
 
 use crate::day::Day;
+use crate::days::day_10::Day10;
 use crate::days::day_2::Day2;
 use crate::days::day_3::Day3;
 use crate::days::day_4::Day4;
@@ -29,7 +30,7 @@ struct CLI {
 }
 
 fn main() {
-    let days: [Box<dyn Day>; 8] = [
+    let days: [Box<dyn Day>; 9] = [
         Box::from(Day2 {}),
         Box::from(Day3 {}),
         Box::from(Day4 {}),
@@ -38,6 +39,7 @@ fn main() {
         Box::from(Day7 {}),
         Box::from(Day8 {}),
         Box::from(Day9 {}),
+        Box::from(Day10 {}),
     ];
 
     let args = CLI::parse();

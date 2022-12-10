@@ -2,9 +2,7 @@ use itertools::Itertools;
 use std::ops::RangeInclusive;
 
 use crate::day::Day;
-use crate::input::read_input;
-
-const INPUT_FILE: &str = "day4.txt";
+use crate::input::input_for_day;
 
 #[derive(Clone, Copy)]
 pub struct Day4 {}
@@ -29,7 +27,7 @@ impl Day for Day4 {
     }
 
     fn task_1(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(4);
         let cleaning_job_pairs = input.lines().map(parse_line_into_cleaning_jobs);
 
         let pairs_where_one_job_contains_the_other =
@@ -42,7 +40,7 @@ impl Day for Day4 {
     }
 
     fn task_2(&self) -> String {
-        let input = read_input(INPUT_FILE);
+        let input = input_for_day(4);
         let cleaning_job_pairs = input.lines().map(parse_line_into_cleaning_jobs);
 
         let pairs_where_one_job_overlaps_the_other =
