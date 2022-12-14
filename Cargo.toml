@@ -9,4 +9,5 @@ edition = "2021"
 bitmaps = "3.2.0"
 clap = { version = "4.0.29", features = ["derive"] }
 itertools = "0.10.5"
+json = "0.12.4"
 regex = "1.7.0"
