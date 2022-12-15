@@ -41,7 +41,7 @@ impl Day for Day15 {
         For task 2: we actually iterate from 0 to 4,000,000, and for each row, run the coverage calculation we described above.
         We then look for the first row where *any* of the ranges in the coverage actually ends within 0 to 4,000,000 (the puzzle assures there's only 1).
 
-        I was afraid that task 2 would take really long, but it actually takes about 6 seconds to complete on my M1 Mac, which is nice!
+        I was afraid that task 2 would take really long, but it actually takes less than a second to complete on my M1 Mac, which is nice!
         "
     }
 
