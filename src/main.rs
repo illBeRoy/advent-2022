@@ -10,6 +10,7 @@ use crate::days::day_11::Day11;
 use crate::days::day_12::Day12;
 use crate::days::day_13::Day13;
 use crate::days::day_14::Day14;
+use crate::days::day_15::Day15;
 use crate::days::day_2::Day2;
 use crate::days::day_3::Day3;
 use crate::days::day_4::Day4;
@@ -34,7 +35,7 @@ struct CLI {
 }
 
 fn main() {
-    let days: [Box<dyn Day>; 13] = [
+    let days: [Box<dyn Day>; 14] = [
         Box::from(Day2 {}),
         Box::from(Day3 {}),
         Box::from(Day4 {}),
@@ -48,6 +49,7 @@ fn main() {
         Box::from(Day12 {}),
         Box::from(Day13 {}),
         Box::from(Day14 {}),
+        Box::from(Day15 {}),
     ];
 
     let args = CLI::parse();
